@@ -1,0 +1,232 @@
+Client Server Architecture
+		-> Fundamental concept in System Design where a network includes multiple clients and server
+
+		-> Clients -> Devices or programs that requests services or resources
+		-> Server -> Powerful machine that provides these services or resources
+
+		-> This architecture allows efficient data management and resource sharing
+
+		-> Key Components in Client Server Architecture
+				* It involves several key components that work together to ensure efficient communicaton, resource management and service delivery.
+						
+						1. Client -> Device or application that requests services or resources from the server
+								  -> Initiates communication with server and processes result returned by the server
+
+						2. Server -> Powerful machine or application that provides services or resources to the clients.
+								  -> Processes Client requests, perform necessary computation or data retrieval and sends appropriate response.
+
+						3. Network -> Facilitates communication between clients and Server
+								   -> Enables Data exchange
+
+						4. Protocols -> Standardized rules to govern data transmission and communication between client and Server
+									 -> Ensures data is transmitted in secure, reliable and understood manner.
+
+						5. Middleware -> Software that acts as intermidiary between clients and server.
+									  -> Provides additional functionality like authentication, logging, message queuing and transaction management.
+
+						6. Database -> Structured collection of data stored on the server.
+									-> Stores and manages data that client requests.
+
+						7. User Interface (UI) -> Part of client application that interacts with the user.
+
+						8. Application Logic -> Refers to code and algorithms that define the application's funcitonality.
+											 -> Processes User Inputs, interacts with the server and manages flow of data between the client and the server.	
+
+	## How Browser Interacts with the Server : 
+			-> User enters URL (Uniform Resource Locator) of the Website or File.
+			-> Browser then requests the (DNS) "Domain Name System" server.
+			-> DNS Server lookup for the address of web server.
+			-> DNS Server responds with IP Address of Web Server.
+			-> Browser then sends HTTP/HTTPS request to the web server's IP.
+			-> The Server then sends over the necessary files for the website.
+			-> Browser then renders the files and website is displayed.
+			-> This rendering is done with the help of DOM (Document Object Model) interpreter, CSS interpreter and JS Engine Collectively known as JIT (Just In Time) Compilers.
+			
+
+API (Application Programming Interface)
+	-> Collection of "Communication Protocols" and "Sub-Routines" used by various programs to communicate between them.
+	-> It takes Request from the user and sends it to the Server and then agains sends the result generated from Service Provider to the desired User.
+
+	-> Enables Applications to exchange data and functionality without exposing their internal details.
+
+	-> Working of an API
+			1. The Client initiates the request via the API's URI (Uniform Resource Identifier).
+			2. API makes call to the server after recieving the request.
+			3. Then the server sends the response back to the API with the information.
+			4. Finally, the API transfers the data to the client.
+
+	-> APIs are considered as secure in terms of attacks as :
+				* It includes Authorization Credentials and an API Gateway to limit access so as to Minimize Security threats.
+
+	-> API vs Web Application
+			-> API acts as interface that allows proper communication between two programs.				(Two Way Communication)
+			-> Web Application is network-based resource responsible for completing a Sigle task.		(A way for users to interact through a web browser)
+
+			-> "All Web Services are APIs but not all APIs are Web Services".
+
+	-> Types of APIs :
+			1. Web APIs -> API for Web
+						-> Can be accessed using HTTP Protocol
+						-> Can be built using JAVA, .NET etc.
+						
+						-> Four types of Web APIs :
+								* Open API
+								* Partner API
+								* Internal API
+								* Composite API
+
+			2. REST APIs -> Representational State Transfer APIs
+						 -> Defines a set of functions (GET, PUT, POST,DELETE) that clients can user to access server data.
+
+						 -> Functions used are :
+								* GET (retrieve a record)
+								* PUT (update a record)
+								* PATCH (Partially Update Data)
+								* POST (create a record)
+								* DELETE (delete the record)
+
+	-> Data Transer Methods in APIs
+			1. REST API (Representational State Transfer)
+					-> Mostly Used
+					-> Uses HTTP methods (GET, PUT, POST, DELETE)
+					-> Data Format : JSON , XML
+					-> Stateless (each request is independent)
+
+			2. GraphQL API
+					-> Allows flexible querying (fetch only needed data)
+					-> Single Endpoint (/graphql)
+					-> Uses query language instead of fixed endpoints
+
+			3. SOAP API (Simple Object Access Protocol)
+					-> Older XML-based API standard
+					-> More Secure (Used in Banking and enterprise system)
+					-> Slower and Complex compared to REST
+
+			4. Web Sockets API
+					-> Real-time data exchange
+					-> Persistent connection between client and server
+					-> Faster than REST for real-time applications.
+
+	## Stateless and Stateful APIs
+
+			1. Stateless API
+					-> Doesn't store information about client between requests.
+					-> Each request contains all necessary information so server doesn't need to remember past interactions.
+
+					-> Key Characteristics
+							* Each request is independent.
+							* No session data is stored on the server
+							* Faster, since no extra processing is required
+
+			2. Stateful API
+					-> Maintains Session information -> server remembers previous interactions with the client
+
+					-> Key Characteristics
+							* Server keeps track of client sessions.
+							* Requests depend on past interaction
+							* Useful when transaction or continuity is required
+
+			## Stateless APIs are best for scalability, speed, and microservices.
+			## Stateful APIs are useful for long-term interactions, banking, and real-time communication.
+
+
+	## Request-Response 
+			-> Request : Message sent by a Client (browser or mobile app) to a server.
+			-> Response : Server's Reply
+
+			-> Components of Request
+					1. HTTP Method -> Defines the action to be performed
+							* GET -> Retrieve Data
+							* POST -> Send Data
+							* PUT -> Update Data
+							* DELETE -> Remove Data
+
+					2. Headers -> Provides Metadata
+							   -> Common Headers : 
+										* Content-Type : Specifies the request body format (application/json, text/html, etc.)
+										* Authorization: Used for Authentication(API key, JWT token, OAuth)
+										* User-Agent : Identifies the client making the request
+
+					3. Body -> Contains data (Used in POST, PUT, PATCH requests)
+
+					4. Query Parameters -> Passed in the URL (?key=value format)
+										-> Example : (GET / products?category=electronics&sort=price)
+													-> category=electronics (filters product by category)
+													-> sort=price (sorts product by price)
+
+			-> Components of Response
+					1. Status Code -> Indicates the result of the request
+									
+									-> Some Common HTTP Status Codes :
+											* 200 OK						-> Successfull Request
+											* 201 Created					-> New Resource Successfully Created
+											* 400 Bad Request				-> Invalid Request from the Client
+											* 401 Unauthorized				-> Authentication required
+											* 403 Forbidden					-> Access Denied
+											* 404 Not Found					-> Requested Resource doesn't exist
+											* 500 Internal Server Error		-> Server Encountered an Issue
+
+					2. Headers -> Provides metadata for the response
+
+					3. Body -> Actual data returned from the server (JSON, HTML, XML etc.)
+
+			-> KEY CONCEPTS
+					1. Stateless Nature of HTTP Requests
+							-> Each HTTP request is independent
+							-> Server does not retain information about previous requests.
+
+					2. Synchronous Vs Asynchronous Requests
+							-> Synchronous Requests : Client waits for the response before continuing.
+							-> Asynchronous Requests : Client sends a request and does not wait for a response .
+
+					3. RESTful API Principles
+							-> Client-Server Model : frontend and backend communicates over HTTP
+							-> Stateless :- Each request is handled independently
+							-> Cacheable :- Response can be cached for performance
+							-> Uniform Interface :- Standard Methods (GET, POST, etc)
+							-> Resource-Based :- API endpoints represent resources
+
+
+	## MVC and MVT Architecture
+			-> MVC and MVT are both architectural design patterns -> Used to convert concerns of application into different components.
+
+			1. MVC (Model-View-Controller)
+					-> Seperates the application into three interconnected components:
+							1. Model :- Represents the data and business Logic of the Application
+										Manages the data and logic and updates the View when the data changes
+
+							2. View :- Represents User Interface (UI) elements.
+									   Displays data from the Model to the user (in form of HTML and UI elements)
+
+							3. Controller :- Acts as intermediary between Model and View.
+											 Handles User input, updates the model and subsequently updates the View.
+
+					-> MVC Flow :
+							-> User Actions : User interacts with the view
+							-> Controller : It processes the input, performs the necessaary logic and updates the Model.
+							-> Model Update : The Model updates its data.
+							-> View Update : View is updated to reflect the changes in the Model.
+
+
+					-> Frameworks Using MVC => ASP.NET MVC, Ruby on Rails
+
+
+			2. MVT (Model-View-Template)
+					-> Primarily used in django.
+					-> Similar to MVC but with some key differences in terminology and structure
+							1. Model :- Similar to MVC, Responsible for data and Business logic
+
+							2. View :- Different from MVC
+									   Responsible for recieving user-input , processing it and returning an appropriate response
+
+							3. Template :- Responsible for rendering HTML and UI elements.
+										   It is a file that defines struture and layout of the output.
+
+					-> MVT Flow
+							-> User Request : User sends HTTP Request
+							-> View : View recieves request and processes it
+									  It interacts with the model to fetch or modify data
+
+							-> Model Update : Model updates the data if needed.
+
+							-> Template : View then uses the Template to render an HTML page with the updated data and returns it to the user
