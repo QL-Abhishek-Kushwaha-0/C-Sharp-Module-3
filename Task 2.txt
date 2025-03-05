@@ -1,0 +1,56 @@
+﻿## MVC and MVT Architecture
+			-> MVC and MVT are both architectural design patterns -> Used to convert concerns of application into different components.
+
+			1. MVC (Model-View-Controller)
+					-> Seperates the application into three interconnected components:
+							1. Model :- Represents the data and business Logic of the Application
+										Manages the data and logic and updates the View when the data changes
+
+							2. View :- Represents User Interface (UI) elements.
+									   Displays data from the Model to the user (in form of HTML and UI elements)
+
+							3. Controller :- Acts as intermediary between Model and View.
+											 Handles User input, updates the model and subsequently updates the View.
+
+					-> MVC Flow :
+							-> User Actions : User interacts with the view
+							-> Controller : It processes the input, performs the necessaary logic and updates the Model.
+							-> Model Update : The Model updates its data.
+							-> View Update : View is updated to reflect the changes in the Model.
+
+
+					-> Frameworks Using MVC => ASP.NET MVC, Ruby on Rails
+
+
+			2. MVT (Model-View-Template)
+					-> Primarily used in django.
+					-> Similar to MVC but with some key differences in terminology and structure
+							1. Model :- Similar to MVC, Responsible for data and Business logic
+
+							2. View :- Different from MVC
+									   Responsible for recieving user-input , processing it and returning an appropriate response
+
+							3. Template :- Responsible for rendering HTML and UI elements.
+										   It is a file that defines struture and layout of the output.
+
+					-> MVT Flow
+							-> User Request : User sends HTTP Request
+							-> View : View recieves request and processes it
+									  It interacts with the model to fetch or modify data
+
+							-> Model Update : Model updates the data if needed.
+
+							-> Template : View then uses the Template to render an HTML page with the updated data and returns it to the user
+
+
+	## Repository Pattern in MVC
+			-> The Repository Pattern in MVC separates data access logic from business logic.
+			-> Makes the application more maintainable, testable, and scalable.
+
+			-> Steps to Implement:
+					1. Define Entity Model – Create a class representing the data.
+					2️. Create Repository Interface – Define CRUD operations.
+					3️. Implement Repository Class – Handle data operations.
+					4️. Register Repository in DI – Add to the dependency injection container.
+					5️. Inject Repository in Controller – Use constructor injection.
+					6️. Use Repository Methods – Call methods in controller actions.

@@ -1,0 +1,93 @@
+﻿	SQL -> Structured Query Language
+
+1. SELECT Statement
+		-> Used to Retrieve data from a database table
+		
+		-> Syntax : 
+					-> SELECT column_name(s) FROM table_name;  -> Will give all rows of specified column(s) from the table
+
+2. Various Query Conditions Involved with SELECT Statement
+
+			1. WHERE Clause
+					-> It is used with SELECT Statement to filter out data based on some condition.
+					-> We can apply conditions using operators as (=, >, <, !=, AND, OR, NOT, LIKE, IS NULL, BETWEEN, IN etc.)
+
+					-- AND operator -> USED TO FILTER RECORDS BASED ON MORE THAN ONE CONDITION  (aLL CONDITIONS INVOLVED IN STATEMENT MUST BE TRUE)
+					-- OR operator -> USED TO FILTER RECORDS BASED ON MORE THAN ONE CONDITION (any ONE CONDITION OR ALL SHOULD BE TRUE)
+					-- NOT -> uSED WWITH OTHER OPERATORS TO GIVE OPPOSITE RESULTS
+					
+					-> Example :  SELECT user_name FROM Users WHERE age >= 18;  -> It will provide user_name of Users whose age id above or equal to 18
+
+			2. ORDER BY Clause
+					-> Used to sort the data in Ascending or Descending Order
+						
+					->	SELECT name FROM Users ORDER BY name DESC;     -> It will provide names of Users in table in Descending order
+
+			3. TOP Clause
+					-> It limits the number of rows in the result set.
+
+					-> SELECT TOP 3 FROM Users;     -> It will provide with 3 rows/records from the Users Table
+
+			4. DISTINCT Clause
+					-> It is Used to avoid the duplicates from the table
+					-> Using this only one of the duplicate records are displayed.
+
+					-> SELECT DISTINCT name FROM Users;
+
+			5. Range Based Conditions
+					-> BETWEEN -> Between a Certain Range
+					-> LIKE -> Search for a Pattern
+					-> IN -> To Specify multiple possible vallues for a column
+
+			6. Pattern Matching
+					-> Used for specific Search Operation
+
+					-> SQL Wildcards
+						1. % -> Represents zero or more characters
+						2. _ -> Represents Single Character
+						3. [] -> Represents any single character within the brackets  -> Used where we need to check for either of many characters
+						4. !  -> Represents any character not in the brackets	h[!oa]t finds hit, but not hot and hat
+						5. -  -> Represents any single character within the specified range	c[a-b]t finds cat and cbt
+						6. #  -> Represents any single numeric character	2#5 finds 205, 215, 225, 235, 245, 255, 265, 275, 285, and 295
+
+			7. Aggregate Functions
+					-> Fucntion that performs calculation on a	set of valaurs and returns a single value
+			
+					-> Aggregate functions are often used with GROUP BY clause of SELECT statement
+
+					-> GROUP BY -> Used to split result-set into groups of values and aggregate functions can be used to return a single valuefor each group
+
+					-> Most Commonly used SQL Aggregate Functions
+						1. MIN() -> return minimum value within the selected column
+						2. MAX() -> returns the largest value within the selected column
+						3. COUNT() -> return the number of records in the set
+						4. SUM() -> return total sum of a numerical column
+						5. AVG() -> return the average value of a numerical column
+
+					-> Aggregate functions ignore the NULL values except for the count function
+
+					-> Example 
+							SELECT MIN(Quantity) AS MIN_QUANTITY FROM Sales;
+
+							SELECT MIN(Price) AS Minimum_Price FROM Sales GROUP BY Category;
+
+							SELECT Category, MIN(Price) AS MinPrice
+							FROM Sales
+							GROUP BY Category;
+
+
+	3. JOINS in SQL
+
+			-> JOINS :- used to combine rows from two or more tables, based on related column between them
+
+			-> Types of JOINS
+					1. INNER JOIN -> Returns records that have matching values in both the tables
+					2. LEFT (OUTER) JOIN -> Return all records from Left Table, and the matched records from the right table.
+					3. RIGHT (OUTER) JOIN -> Returns all records from Right Table and the matched records from the left table.
+					4. FULL (OUTER) JOIN -> Return all records when there is a Match in either of Left or Right table
+					5. CROSS JOIN -> Returns the Cartesian product of two tables, meaning every row from the first table is combined with every row from the second table.
+					6. SELF JOIN → A table joins with itself (useful for hierarchical data).
+
+
+	3. 
+		
